@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+# Defines the root path route ("/")
+# root "posts#index"
+
+resources :post
 
   get "hello/index" => "hello#index"
 
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   post "tweets" => "tweets#create"
   root "hello#index"
 
+  get "tweets/about" => "tweets#about"
   get "tweets/search" => "tweets#search"
   get "tweets/:id" => "tweets#show", as: "tweet"
   patch "tweets/:id" => "tweets#update"

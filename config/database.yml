@@ -28,7 +28,7 @@ test:
 # Similarly, if you deploy your application as a Docker container, you must
 # ensure the database is located in a persisted volume.
 production:
-adapter: postgresql
-url: <%= ENV['DATABASE_URL'] %>
-pool: 5
-sslmode: require
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: 5
+  sslmode: require
