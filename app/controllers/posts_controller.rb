@@ -1,4 +1,4 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
   def index
       start_date = params.fetch(:start_date, Date.today).to_date
       @events = Post.where("start_time <= ? AND (end_time >= ? OR end_time IS NULL)", start_date.end_of_month.end_of_week, start_date.beginning_of_month.beginning_of_week)
