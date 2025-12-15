@@ -9,19 +9,33 @@
     <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <h1>GeekTwitter</h1>
-      <div class="header-list">
-      <ul>
-        <li><%= link_to "ホーム", tweets_path %></li>
-        <li><%= link_to "新規投稿",tweets_new_path %></li>
+
+<header class="l-header">
+  <div class="l-header__bg"></div>
+  <div class="l-header__inner">
+    <h1 class="l-header__logo">
+      <%= link_to tweets_path do %>
+        <%= image_tag "assteplogo.png", alt: "Asstep", loading: "lazy" %>
+      <% end %>
+    </h1>
+
+    <nav class="l-header__nav">
+      <ul class="l-header__navList">
+        <li><%= link_to "About us", tweets_about_path %></li>
+        <li><%= link_to "Event", tweets_new_path %></li>
+        <li><%= link_to "Members", members_path %></li>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
       </ul>
-      </div>
-    </header>
+    </nav>
+  </div>
+</header>
+
+
     <main>
       <%= yield %>
     </main>
+
+
     <footer>
       <p>Copyright © GeekSalon All Rights Reserved.</p>
     </footer>

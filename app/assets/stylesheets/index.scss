@@ -1,12 +1,9 @@
 .tweets-container {
   width: 50%;
   margin: 10px auto;
+  padding-top: 120px; 
 }
-h3 {
-  width: 100px;
-  margin: 30px auto;
-  text-align: center;
-}
+
 .tweet {
   border-top: solid #00acee;
   margin-top: 10px;
@@ -20,4 +17,26 @@ h3 {
 .time {
   display: flex;
   justify-content: flex-end;
+}
+
+
+.catch-copy {
+  font-size: 56px;          /* 글씨 크기 */
+  color: #ffffff;           /* 글씨 색 */
+  font-family: "Noto Sans JP", sans-serif; /* 글씨체 */
+  font-weight: 700;         /* 굵기 */
+  line-height: 1.2;         /* 줄간격 */
+  margin-top: 40px;     /* 위에서 내려오는 거리 */
+  margin-left: 1px;    /* 왼쪽에서 떨어진 거리 */
+  }
+
+
+  .hero {
+  position: relative;
+  width: 100%;
+  height: 500px;              /* 일단 고정 추천 (원하면 60vh로) */
+  margin-top: -120px;     
+  background-image: url("gakuseidantai.jpg");
+  background-size: cover;
+  background-position: center 95%;
 }

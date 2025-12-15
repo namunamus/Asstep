@@ -1,18 +1,23 @@
 <%= stylesheet_link_tag 'index', :media => "all" %>
 
-<div class="tweets-container">
-<h3>Tweet一覧</h3>
-<% @tweets.each do |t| %>
+
+
+<section class="hero"> <div class="hero-overlay"></div> 
+<h1 class="catch-copy"> 多様な人々が共に暮らす社会を<br> 一緒に実現しませんか？ </h1>
+
+
+
+<%# 
+ @tweets.each do |t| %>
     <div class="tweet">
     <div class="main-box">
-        <div class="left-container"><%= t.body %></div>
+        <div class="left-container"><%#= t.body %></div>
         <div class="right-container">
-        <%= link_to "詳細", tweet_path(t.id) %>
-        <%= link_to "編集", edit_tweet_path(t.id) %>
-        <%= link_to "削除", tweet_path(t.id), method: :delete %>
+        <%#= link_to "↳", tweet_path(t.id) %>
+        <%#= link_to "↳", edit_tweet_path(t.id) %>
+        <%#= link_to "削除", tweet_path(t.id), method: :delete %>
         </div>
     </div>
-        <p class="time"><%= t.created_at %></p>
+        <p class="time"><%#= t.created_at %></p>
     </div>
-<% end %>
-</div>
+<%# end %>

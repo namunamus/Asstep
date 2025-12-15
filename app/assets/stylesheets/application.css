@@ -25,37 +25,87 @@ body {
     Meiryo, "ＭＳ Ｐゴシック", sans-serif;
   display: flex;
   flex-direction: column;
+  background-color: #222223;
 }
-header {
-  background-color: #00acee;
+
+
+main{
+  padding-top: 0;
+}
+
+
+
+.l-header{
+  position: fixed;     
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 1000;
+}
+
+
+
+.l-header__bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 80px;
-  font-weight: bold;
+  background-color: rgba(255,255,255,0.6);
+  z-index: 1;
+}
+
+
+
+
+.l-header__inner{
+  position: relative;
+  z-index: 2;
+  padding: 16px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-header a {
-  color: white; 
-  text-decoration: none; 
+
+
+
+/* 로고 박스 */
+.l-header__logo{
+  pointer-events: auto; 
 }
-header h1 {
-  color: white;
-  margin-left: 20px;
+
+.l-header__logo a{
+  display: inline-block;
+  background: #fff;
+  padding: 14px 16px;
+  border-radius: 2px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
 }
-.header-list {
-  display: flex;
+
+/* 로고 이미지 크기 */
+.l-header__logo img{
+  height: 90px;   
+  width: auto;
+  display: block;
+}
+
+
+
+.l-header__navList{
+  list-style: none;     /* • 제거 */
+  padding: 0;           /* 왼쪽 들여쓰기 제거 */
+  margin: 0;            /* 위아래 기본 여백 제거 */
+  display: flex;        /* li들을 가로로 */
+  gap: 16px;            /* 메뉴 사이 간격 */
   align-items: center;
 }
-header ul {
-  display: flex;
-}
-header li {
-  list-style: none;
-  margin-right: 40px;
-}
+
+
+
 footer {
   color: white;
-  height: 30px;
+  height: 60px;
   background-color: #000;
   bottom: 0;
   width: 100%;

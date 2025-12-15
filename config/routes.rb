@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 # root "posts#index"
 
 resources :posts
+resources :members
 
   get "hello/index" => "hello#index"
 
@@ -21,7 +22,7 @@ resources :posts
   get "tweets" => "tweets#index"
   get "tweets/new" => "tweets#new"
   post "tweets" => "tweets#create"
-  root "hello#index"
+  root "tweets#index"
 
   get "tweets/about" => "tweets#about"
   get "tweets/search" => "tweets#search"
@@ -30,3 +31,4 @@ resources :posts
   delete "tweets/:id" => "tweets#destroy"
   get "tweets/:id/edit" => "tweets#edit", as: "edit_tweet"
 end
+
