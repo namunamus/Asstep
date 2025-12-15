@@ -13,8 +13,7 @@ Rails.application.routes.draw do
 # Defines the root path route ("/")
 # root "posts#index"
 
-resources :posts
-resources :members
+
 
   get "hello/index" => "hello#index"
 
@@ -30,5 +29,7 @@ resources :members
   patch "tweets/:id" => "tweets#update"
   delete "tweets/:id" => "tweets#destroy"
   get "tweets/:id/edit" => "tweets#edit", as: "edit_tweet"
+  resources :posts
+  resources :members
 end
 
