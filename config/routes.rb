@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "events/index"
+  get "events/show"
+  get "events/new"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -15,21 +18,23 @@ Rails.application.routes.draw do
 
 
 
-  get "hello/index" => "hello#index"
+get "hello/index" => "hello#index"
+get "hello/link"  => "hello#link"
 
-  get "hello/link" => "hello#link"
-  get "tweets" => "tweets#index"
-  get "tweets/new" => "tweets#new"
-  post "tweets" => "tweets#create"
-  root "tweets#index"
+get "tweets"      => "tweets#index"
+get "tweets/new"  => "tweets#new"
+post "tweets"     => "tweets#create"
+root "tweets#index"
 
-  get "tweets/about" => "tweets#about"
-  get "tweets/search" => "tweets#search"
-  get "tweets/:id" => "tweets#show", as: "tweet"
-  patch "tweets/:id" => "tweets#update"
-  delete "tweets/:id" => "tweets#destroy"
-  get "tweets/:id/edit" => "tweets#edit", as: "edit_tweet"
-  resources :posts
-  resources :members
-end
+get "tweets/about",  to: "tweets#about",  as: :tweets_about
+get "tweets/search" => "tweets#search"
 
+get "tweets/:id"      => "tweets#show",   as: "tweet"
+patch "tweets/:id"    => "tweets#update"
+delete "tweets/:id"   => "tweets#destroy"
+get "tweets/:id/edit" => "tweets#edit",   as: "edit_tweet"
+
+resources :posts
+resources :members
+resources :events
+ end

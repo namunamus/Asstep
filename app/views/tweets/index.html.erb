@@ -2,8 +2,162 @@
 
 
 
-<section class="hero"> <div class="hero-overlay"></div> 
-<h1 class="catch-copy"> 多様な人々が共に暮らす社会を<br> 一緒に実現しませんか？ </h1>
+<section class="hero">
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+    <h1 class="catch-copy">
+    多様な人々が共に暮らす社会を<br>
+    一緒に実現しませんか？
+    </h1>
+</div>
+
+
+<div class="hero-cta">
+  <span class="cta-label">例えば…？</span>
+</div>
+</section>
+
+
+
+
+<section class="message-section">
+<div class="message-wrap">
+
+<p class="message message-left">
+  <span class="emphasis">継承語</span>を通して、<br>
+  子どもに多様なチャンスと可能性を！
+</p>
+
+<p class="message message-right">
+  <span class="emphasis">地域住民</span>の悩み解決の<br>
+  第一歩はしっかりした<br>
+  コミュニティ！
+</p>
+
+<p class="message message-left">
+  <span class="emphasis">子ども</span>の<span class="emphasis">未来</span>＝<br>
+  <span class="emphasis">多文化社会</span>の<span class="emphasis">鍵</span>
+</p>
+
+    <div class="message-box">
+    そのつながりを作る活動、<br>
+    一緒にしてみませんか？
+    </div>
+
+</div>
+</section>
+
+
+
+<section class="home-links" id="home-links">
+  <div class="home-links__grid">
+
+    <!-- 좌상: Who are you / Asstep / About us 버튼 -->
+    <div class="home-links__block home-links__block--who">
+      <p class="home-links__kicker">Who are you?</p>
+      <h2 class="home-links__title">Asstep!</h2>
+
+      <%= link_to "↳", tweets_about_path,
+          class: "arrow-btn",
+          aria: { label: "Go to About us" } %>
+    </div>
+
+    <!-- 우상: about us 이미지(임시) -->
+    <div class="home-links__block home-links__block--img">
+      <%= image_tag "aboutuspic.jpg",
+          alt: "About us",
+          class: "home-links__img" %>
+    </div>
+
+    <!-- 좌하: members 이미지(임시) -->
+    <div class="home-links__block home-links__block--img">
+      <%= image_tag "memberspic.jpg",
+          alt: "Members",
+          class: "home-links__img" %>
+    </div>
+
+    <!-- 우하: Members / 버튼 -->
+    <div class="home-links__block home-links__block--members">
+      <h2 class="home-links__title">Members</h2>
+
+      <%= link_to "↵", members_path,
+          class: "arrow-btn",
+          aria: { label: "Go to Members" } %>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="event-entry">
+  <h2 class="event-entry__title">Event</h2>
+
+  <%= link_to events_path, class: "event-entry__card" do %>
+    <%= image_tag "katsudou1", alt: "第一回：韓国語講習会！", class: "event-entry__img" %>
+
+    <div class="event-entry__text">
+      <p class="event-entry__name">第一回：韓国語講習会！</p>
+      <p class="event-entry__date">2025年8月21日開催</p>
+      <p class="event-entry__status">開催済み</p>
+    </div>
+  <% end %>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="calendar-section">
+  <div class="calendar-wrap">
+    <div class="calendar-head">
+      <h2 class="calendar-title">Calendar</h2>
+      <%= link_to "予定を追加", new_post_path, class: "calendar-add-btn" %>
+    </div>
+
+    <%= month_calendar(events: @events) do |date, events| %>
+      <div class="cal-day">
+        <div class="cal-date"><%= date.day %></div>
+
+        <% events.each do |event| %>
+          <div class="cal-event"><%= event.title %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+
+
+
+
+
+
+
 
 
 
@@ -21,3 +175,14 @@
         <p class="time"><%#= t.created_at %></p>
     </div>
 <%# end %>
+
+
+
+
+
+
+
+
+
+
+

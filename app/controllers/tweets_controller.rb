@@ -1,16 +1,26 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!
-def index
-@tweets = Tweet.all
-@events = Post.all
-end
+  before_action :authenticate_user!, except: [:index, :about, :search, :show]
+
+  def index
+    @tweets = Tweet.all
+
+    start_date = params.fetch(:start_date, Date.today).to_date
+    @events = Post.where(
+      "start_time <= ? AND (end_time >= ? OR end_time IS NULL)",
+      start_date.end_of_month.end_of_week,
+      start_date.beginning_of_month.beginning_of_week
+    )
+  end
+
   def new
     @tweet = Tweet.new
   end
-def show
+
+  def show
     @tweet = Tweet.find(params[:id])
   end
-      def create
+
+  def create
     tweet = Tweet.new(tweet_params)
     if tweet.save
       redirect_to action: "index"
@@ -18,7 +28,6 @@ def show
       redirect_to action: "new"
     end
   end
-
 
   def edit
     @tweet = Tweet.find(params[:id])
@@ -39,16 +48,16 @@ def show
     redirect_to action: :index
   end
 
-def search
-      @tweets =  Tweet.all
-      @q = Tweet.ransack(params[:q])
-      @tweets= @q.result
-    end
+  def search
+    @q = Tweet.ransack(params[:q])
+    @tweets = @q.result
+  end
 
-def about
-end
+  def about
+  end
 
   private
+
   def tweet_params
     params.require(:tweet).permit(:body)
   end

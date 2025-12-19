@@ -1,2 +1,32 @@
-<h1>Members#new</h1>
-<p>Find me in app/views/members/new.html.erb</p>
+
+
+<section class="member-form-page">
+  <div class="member-form-page__inner">
+    <h1 class="member-form-title">メンバーを投稿</h1>
+
+<%= form_with model: @member, local: true do |f| %>
+  <div>
+    <%= f.label :namae, "名前" %><br>
+    <%= f.text_field :namae, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :daigakumei, "大学・学部・学年" %><br>
+    <%= f.text_field :daigakumei %>
+  </div>
+
+  <div>
+    <%= f.label :zikointro, "自己紹介" %><br>
+    <%= f.text_area :zikointro, rows: 6 %>
+  </div>
+
+  <div>
+    <%= f.label :photo, "写真" %><br>
+    <%= f.file_field :photo, accept: "image/*" %>
+  </div>
+
+  <%= f.submit "投稿する" %>
+<% end %>
+
+  </div>
+</section>

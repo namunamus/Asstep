@@ -10,9 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
+
 
  * {
   padding: 0;
@@ -25,7 +27,7 @@ body {
     Meiryo, "ＭＳ Ｐゴシック", sans-serif;
   display: flex;
   flex-direction: column;
-  background-color: #222223;
+  background-color: #fcfcff;
 }
 
 
@@ -62,7 +64,7 @@ main{
 .l-header__inner{
   position: relative;
   z-index: 2;
-  padding: 16px 20px;
+  padding: 8px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -97,20 +99,630 @@ main{
   padding: 0;           /* 왼쪽 들여쓰기 제거 */
   margin: 0;            /* 위아래 기본 여백 제거 */
   display: flex;        /* li들을 가로로 */
-  gap: 16px;            /* 메뉴 사이 간격 */
+  gap: 12px;            /* 메뉴 사이 간격 */
   align-items: center;
 }
 
 
 
-footer {
-  color: white;
-  height: 60px;
-  background-color: #000;
-  bottom: 0;
-  width: 100%;
+
+
+
+
+
+
+
+
+
+/* ===== Footer ===== */
+.site-footer{
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding: 18px 0;
+}
+
+.site-footer__inner{
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-footer__left{
   display: flex;
   align-items: center;
-  position: fixed;
+  gap: 16px;
+}
+
+.site-footer__icons{
+  display: flex;
+  gap: 10px;
+}
+
+.site-footer__icon{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.site-footer__mail{
+  color: #111;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.site-footer__mail:hover{
+  text-decoration: underline;
+}
+
+.site-footer__center{
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: #111;
+}
+
+.site-footer__right{
+  display: flex;
   justify-content: flex-end;
+}
+
+.site-footer__logo{
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.l-header__navList li a{
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* 로그인만 테두리 버튼(마지막 메뉴) */
+.l-header__navList li:last-child a{
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+/* hover(선택) */
+.l-header__navList li a:hover{
+  background: rgba(0,0,0,0.9);
+}
+.l-header__navList li:last-child a:hover{
+  background: #fff;
+  color: #000;
+}
+
+.l-header__nav{
+  margin-top: -65px;   /* -4 ~ -10px 사이에서 조절 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Members page ===== */
+.members-page{
+  background: #fff;
+  padding: 160px 0 90px; /* 헤더 fixed 고려 */
+}
+
+.members-page__inner{
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.members-toolbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.members-title{
+  font-size: 44px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.members-actions{
+  display: flex;
+  gap: 10px;
+}
+
+/* 버튼 공통 */
+.members-btn{
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 800;
+  border: 1px solid transparent;
+}
+
+.members-btn--primary{
+  background: #000;
+  color: #fff;
+}
+
+.members-btn--ghost{
+  background: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+.members-btn--danger{
+  background: #fff;
+  color: #b00020;
+  border-color: #b00020;
+}
+
+/* 리스트/카드 */
+.members-list{
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.member-card{
+  display: flex;
+  gap: 34px;
+  align-items: flex-start;
+}
+
+/* 짝수는 반대로(오른쪽 사진) */
+.member-card:nth-child(even){
+  flex-direction: row-reverse;
+}
+
+.member-card__photo{
+  flex: 0 0 320px;
+}
+
+.member-card__img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.member-card__body{
+  flex: 1;
+  min-width: 0;
+}
+
+.member-card__name{
+  font-size: 44px;
+  font-weight: 900;
+  margin: 0 0 10px 0;
+}
+
+.member-card__sub{
+  margin: 0 0 16px 0;
+  color: #555;
+  font-weight: 700;
+}
+
+.member-card__text{
+  margin: 0 0 18px 0;
+  color: #111;
+  line-height: 1.7;
+}
+
+.member-card__controls{
+  display: flex;
+  gap: 10px;
+}
+
+/* 폼 */
+.member-form-page{
+  background: #fff;
+  padding: 160px 0 90px;
+}
+
+.member-form-page__inner{
+  width: 92%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.member-form-title{
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.form-row{
+  margin-bottom: 16px;
+}
+
+.form-row label{
+  display: block;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.form-row input,
+.form-row textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-actions{
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* 모바일 */
+@media (max-width: 900px){
+  .member-card,
+  .member-card:nth-child(even){
+    flex-direction: column;
+  }
+  .member-card__photo{
+    flex: none;
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+
+.member-photo{
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ===== About page ===== */
+.about-page{
+  background: #fff;
+  padding: 160px 0 120px; /* header 고려 */
+}
+
+.about-page__inner{
+  width: 92%;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.about-title{
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.about-lead{
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  color: #333;
+}
+
+.about-main-image{
+  margin: 24px 0 32px;
+}
+
+.about-main-image__img{
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.about-text{
+  font-size: 14px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 64px;
+}
+
+.about-block{
+  margin-bottom: 80px;
+}
+
+.about-subtitle{
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Events ===== */
+.events-page{
+  padding-top: 140px; /* 헤더 fixed 보정 */
+  background:#fff;
+}
+.events-page__inner{
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.events-toolbar{
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.events-title{
+  font-size: 56px;
+  font-weight: 900;
+  margin: 0;
+}
+.events-sub{
+  margin: 8px 0 0 0;
+  color:#333;
+  opacity:.8;
+}
+
+.events-list{
+  display:flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.event-row{
+  display:flex;
+  gap: 36px;
+  align-items:flex-start;
+}
+
+/* ✅ 번갈아 배치(스크샷 느낌) */
+.events-list .event-row:nth-child(even){
+  flex-direction: row-reverse;
+}
+
+.event-row__photo{
+  flex: 0 0 360px;
+}
+.event-row__img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius: 6px;
+}
+
+.event-row__body{
+  flex: 1;
+  padding-top: 10px;
+}
+
+.event-row__name{
+  margin:0;
+  font-size: 18px;
+  font-weight: 800;
+}
+.event-row__line{
+  margin: 10px 0 16px;
+  height:1px;
+  background:#ddd;
+  width: 100%;
+  max-width: 380px;
+}
+.event-row__text{
+  margin:0 0 18px;
+  color:#111;
+  line-height:1.7;
+}
+
+.event-row__actions{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  flex-wrap: wrap;
+}
+
+.event-row__cta{
+  display:inline-block;
+  padding: 10px 14px;
+  background:#000;
+  color:#fff;
+  text-decoration:none;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 13px;
+}
+.event-row__cta:hover{ opacity:.85; }
+
+/* ===== Event show ===== */
+.event-show{
+  padding-top: 140px;
+  background:#fff;
+}
+.event-show__inner{
+  width: 92%;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.event-show__title{
+  font-size: 44px;
+  font-weight: 900;
+  margin: 0 0 20px;
+}
+
+.event-show__coverImg{
+  width: min(520px, 100%);
+  display:block;
+  margin: 0 auto 24px;
+  border-radius: 6px;
+}
+
+.event-show__body{
+  line-height: 1.8;
+  color:#111;
+  margin-bottom: 24px;
+}
+
+.event-show__toolbar{
+  display:flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.event-show__galleryTitle{
+  font-size: 22px;
+  font-weight: 900;
+  margin: 0 0 14px;
+}
+
+.event-show__grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.event-show__gridImg{
+  width:100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 6px;
+  display:block;
+}
+
+.event-show__empty{
+  opacity:.7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ✅ 헤더 배경(반투명 바)이 클릭을 가로막지 않게 */
+.l-header__bg{
+  pointer-events: none;
+}
+
+/* ✅ nav는 클릭 가능 보장 */
+.l-header__nav,
+.l-header__navList,
+.l-header__navList a{
+  pointer-events: auto;
+}
+
+/* ✅ 헤더를 무조건 최상단으로 */
+.l-header{
+  z-index: 9999;
+}
+
+
+
+
+
+
+
+
+
+/* 로그아웃 버튼이 메뉴랑 같은 느낌이 되도록 */
+.logout-btn{
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.logout-btn:hover{
+  background: rgba(0,0,0,0.9);
 }

@@ -1,27 +1,43 @@
-<%= stylesheet_link_tag 'users_sessions_new', :media => "all" %>
+<%= stylesheet_link_tag 'users_sessions_new', media: 'all' %>
+
 <div class="blank1">
-<div class="blank2">
-<h2>ログイン</h2>
-<p>※登録したメールアドレスとパスワードを入力してください。</p>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class="field">
-<%= f.label :メール %><br />
-<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-</div>
-<div class="field">
-<%= f.label :パスワード %><br />
-<%= f.password_field :password, autocomplete: "current-password" %>
-</div>
-<% if devise_mapping.rememberable? %>
-<div class="field">
-<%= f.check_box :remember_me %>
-<%= f.label :パスワードを保存 %>
-</div>
-<% end %>
-<div class="actions">
-<%= f.submit "ログイン" %>
-</div>
-<% end %>
-<%= render "users/shared/links" %>
-</div>
+  <div class="blank2">
+
+    <div class="login-logo">
+      <%= image_tag "assteplogo.png", alt: "Asstep", class: "login-logo__img" %>
+    </div>
+
+    <div class="login-box">
+      <h2 class="login-title">ログイン</h2>
+      <p class="login-desc">※登録したメールアドレスとパスワードを入力してください。</p>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field login-field">
+          <%= f.label :email, "メール", class: "login-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "login-input" %>
+        </div>
+
+        <div class="field login-field">
+          <%= f.label :password, "パスワード", class: "login-label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "login-input" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field login-remember">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, "パスワードを保存" %>
+          </div>
+        <% end %>
+
+        <div class="actions login-actions">
+          <%= f.submit "ログイン", class: "login-btn" %>
+        </div>
+      <% end %>
+
+      <div class="login-links">
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
+
+  </div>
 </div>

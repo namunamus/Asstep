@@ -1,0 +1,55 @@
+<section class="events-page">
+  <div class="events-page__inner">
+
+    <div class="events-toolbar">
+      <div>
+        <h1 class="events-title">Event</h1>
+        <p class="events-sub">サイトの内容や背景を伝え、続きを読ませたくさせるサブ見出し。</p>
+      </div>
+
+      <%= link_to "イベントを投稿", new_event_path, class: "members-btn members-btn--primary" %>
+    </div>
+
+    <% if @events.blank? %>
+      <div class="members-empty">
+        <p class="members-empty__text">まだイベントがありません。</p>
+        <%= link_to "最初のイベントを投稿", new_event_path, class: "members-btn members-btn--primary" %>
+      </div>
+    <% else %>
+      <div class="events-list">
+        <% @events.each do |e| %>
+          <article class="event-row">
+            <div class="event-row__photo">
+              <% if e.cover.attached? %>
+                <%= image_tag e.cover, class: "event-row__img", alt: e.title %>
+              <% else %>
+                <!-- 대표이미지 없으면 레이아웃용 고정이미지 -->
+                <%= image_tag "katsudou1.jpg", class: "event-row__img", alt: e.title %>
+              <% end %>
+            </div>
+
+            <div class="event-row__body">
+              <h2 class="event-row__name"><%= e.title %></h2>
+              <div class="event-row__line"></div>
+
+              <p class="event-row__text"><%= simple_format(e.body) %></p>
+
+              <div class="event-row__actions">
+                <!-- ✅ “활동사진↳” = 해당 이벤트 show(갤러리)로 이동 -->
+                <%= link_to "活動写真↳", event_path(e), class: "event-row__cta" %>
+
+                <%= link_to "編集", edit_event_path(e), class: "members-btn members-btn--ghost" %>
+
+                <%= button_to "削除", event_path(e),
+                      method: :delete,
+                      form: { data: { turbo_confirm: "削除しますか？" } },
+                      class: "members-btn members-btn--danger" %>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</section>

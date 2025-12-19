@@ -1,2 +1,54 @@
-<h1>Members#index</h1>
-<p>Find me in app/views/members/index.html.erb</p>
+<section class="members-page">
+  <div class="members-page__inner">
+
+    <!-- 상단: 투고 버튼 -->
+    <div class="members-toolbar">
+      <h1 class="members-title">Members</h1>
+
+      <div class="members-actions">
+        <%= link_to "メンバーを投稿", new_member_path, class: "members-btn members-btn--primary" %>
+      </div>
+    </div>
+
+    <% if @members.blank? %>
+      <!-- 등록 0명 -->
+      <div class="members-empty">
+        <p class="members-empty__text">まだメンバーが登録されていません。</p>
+        <%= link_to "最初のメンバーを投稿", new_member_path, class: "members-btn members-btn--primary" %>
+      </div>
+    <% else %>
+      <!-- 멤버 카드 리스트 -->
+      <div class="members-list">
+        <% @members.each do |m| %>
+          <article class="member-card">
+            <div class="member-card__photo">
+              <% if m.photo.attached? %>
+                <%= image_tag m.photo, alt: m.namae, class: "member-card__img" %>
+              <% else %>
+                <%= image_tag "ma.jpg", alt: m.namae, class: "member-card__img" %>
+              <% end %>
+            </div>
+
+            <div class="member-card__body">
+              <h2 class="member-card__name"><%= m.namae %></h2>
+
+              <p class="member-card__sub"><%= m.daigakumei %></p>
+
+              <p class="member-card__text"><%= simple_format(m.zikointro) %></p>
+
+              <div class="member-card__controls">
+                <%= link_to "編集", edit_member_path(m), class: "members-btn members-btn--ghost" %>
+
+                <%= button_to "削除", member_path(m),
+                      method: :delete,
+                      form: { data: { turbo_confirm: "削除しますか？" } },
+                      class: "members-btn members-btn--danger" %>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</section>

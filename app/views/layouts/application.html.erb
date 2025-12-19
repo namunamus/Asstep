@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>Asstep</title>
@@ -9,35 +10,71 @@
     <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <body>
+    <!-- ===== Header ===== -->
+    <header class="l-header">
+      <div class="l-header__bg"></div>
+      <div class="l-header__inner">
+        <h1 class="l-header__logo">
+          <%= link_to tweets_path do %>
+            <%= image_tag "assteplogo.png", alt: "Asstep", loading: "lazy" %>
+          <% end %>
+        </h1>
 
-<header class="l-header">
-  <div class="l-header__bg"></div>
-  <div class="l-header__inner">
-    <h1 class="l-header__logo">
-      <%= link_to tweets_path do %>
-        <%= image_tag "assteplogo.png", alt: "Asstep", loading: "lazy" %>
-      <% end %>
-    </h1>
+        <nav class="l-header__nav">
+          <ul class="l-header__navList">
+            <li><%= link_to "About us", tweets_about_path %></li>
+            <li><%= link_to "Event", events_path %></li>
+            <li><%= link_to "Members", members_path %></li>
 
-    <nav class="l-header__nav">
-      <ul class="l-header__navList">
-        <li><%= link_to "About us", tweets_about_path %></li>
-        <li><%= link_to "Event", tweets_new_path %></li>
-        <li><%= link_to "Members", members_path %></li>
-        <li><%= link_to "ログイン", new_user_session_path %></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+            <% if user_signed_in? %>
+              <li>
+                <%= button_to "ログアウト",
+                      destroy_user_session_path,
+                      method: :delete,
+                      form: { data: { turbo_confirm: "ログアウトしますか？" } },
+                      class: "logout-btn" %>
+              </li>
+            <% else %>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-
+    <!-- ===== Main ===== -->
     <main>
       <%= yield %>
     </main>
 
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+      <div class="site-footer__inner">
 
-    <footer>
-      <p>Copyright © GeekSalon All Rights Reserved.</p>
+        <!-- 左：SNS + メール -->
+        <div class="site-footer__left">
+          <div class="site-footer__icons" aria-label="Social links">
+            <a href="#" class="site-footer__icon" aria-label="Instagram">◎</a>
+            <a href="#" class="site-footer__icon" aria-label="Facebook">f</a>
+          </div>
+
+          <a class="site-footer__mail" href="mailto:aidlfrk7242@gmail.com">
+            aidlfrk7242@gmail.com
+          </a>
+        </div>
+
+        <!-- 中央 -->
+        <div class="site-footer__center">
+          Asstep
+        </div>
+
+        <!-- 右：ロゴ -->
+        <div class="site-footer__right">
+          <%= image_tag "assteplogo.png", alt: "Asstep", class: "site-footer__logo" %>
+        </div>
+
+      </div>
     </footer>
   </body>
 </html>

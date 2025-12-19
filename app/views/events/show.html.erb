@@ -1,0 +1,32 @@
+<section class="event-show">
+  <div class="event-show__inner">
+    <h1 class="event-show__title"><%= @event.title %></h1>
+
+    <div class="event-show__cover">
+      <% if @event.cover.attached? %>
+        <%= image_tag @event.cover, class: "event-show__coverImg" %>
+      <% end %>
+    </div>
+
+    <div class="event-show__body">
+      <%= simple_format(@event.body) %>
+    </div>
+
+    <div class="event-show__toolbar">
+      <%= link_to "一覧へ戻る", events_path, class: "members-btn members-btn--ghost" %>
+      <%= link_to "編集", edit_event_path(@event), class: "members-btn members-btn--ghost" %>
+    </div>
+
+    <h2 class="event-show__galleryTitle">活動写真</h2>
+
+    <% if @event.photos.attached? %>
+      <div class="event-show__grid">
+        <% @event.photos.each do |ph| %>
+          <%= image_tag ph, class: "event-show__gridImg" %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="event-show__empty">まだ写真がありません。（編集から追加できます）</p>
+    <% end %>
+  </div>
+</section>

@@ -5,9 +5,7 @@
 }
 
 .tweet {
-  border-top: solid #00acee;
-  margin-top: 10px;
-  padding-top: 20px;
+  border-top: none
 }
 .main-box {
   margin: 5px 0;
@@ -20,23 +18,345 @@
 }
 
 
-.catch-copy {
-  font-size: 56px;          /* 글씨 크기 */
-  color: #ffffff;           /* 글씨 색 */
-  font-family: "Noto Sans JP", sans-serif; /* 글씨체 */
-  font-weight: 700;         /* 굵기 */
-  line-height: 1.2;         /* 줄간격 */
-  margin-top: 40px;     /* 위에서 내려오는 거리 */
-  margin-left: 1px;    /* 왼쪽에서 떨어진 거리 */
-  }
 
 
-  .hero {
+.hero{
   position: relative;
   width: 100%;
-  height: 500px;              /* 일단 고정 추천 (원하면 60vh로) */
-  margin-top: -120px;     
+  height: 500px;
+  margin-top: -120px;                 /* 헤더(120px) 뒤까지 배경 올리기 */
   background-image: url("gakuseidantai.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center 95%;
+}
+
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  pointer-events: none;
+}
+
+.hero-content{
+  position: relative;
+  z-index: 2;
+
+  height: 100%;
+  display: flex;
+  align-items: center;                /* 세로 중앙 */
+  padding-top: 120px;                 /* 헤더 높이만큼 아래로 */
+  padding-left: 40px;
+  box-sizing: border-box;
+}
+
+.catch-copy{
+  margin: 0;                          /* margin-top 제거 */
+  font-size: 56px;
+  color: #fff;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+
+
+
+
+
+
+
+
+
+.hero-cta{
+  position: absolute;
+  bottom: -15px;         /* ← 노란선 위치 (20~40px로 조절) */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.cta-label{
+  display: inline-block;
+  padding: 10px 22px;
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  font-size: 14px;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+.message-section{
+  background: #fff;
+  padding: 90px 0 120px;
+}
+
+.message-wrap{
+  width: 92%;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.message{
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #000;
+  margin: 0 0 70px 0;
+}
+
+.message-left{
+  text-align: left;
+}
+
+.message-right{
+  text-align: right;
+}
+
+.message-box{
+  margin: 90px auto 0;
+  width: 92%;
+  max-width: 720px;
+
+  background: #f2f2f2;
+  padding: 40px 24px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.4;
+  border-radius: 0px; /* 필요하면 8px로 */
+}
+
+.emphasis{
+  font-size: 1.3em;     /* 기본 글자 대비 1.3배 */
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Home links (2x2) ===== */
+.home-links{
+  background: #fff;
+  padding: 90px 0;
+}
+
+.home-links__grid{
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.home-links__block{
+  min-height: 240px;
+}
+
+/* 좌상 텍스트 블록 */
+.home-links__kicker{
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.home-links__title{
+  margin: 0 0 18px 0;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.05;
+  color: #000;
+}
+
+/* 이미지 블록 */
+.home-links__img{
+  width: 100%;
+  height: 240px;        /* 스샷 느낌: 가로로 긴 직사각 */
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+
+/* 화살표 버튼 */
+.arrow-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.arrow-btn:hover{
+  opacity: 0.85;
+}
+
+
+
+
+
+
+
+
+.event-entry{
+  width: 92%;
+  max-width: 980px;
+}
+
+
+.event-entry__title{
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+.event-entry__card{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.event-entry__img{
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+
+.event-entry__text{
+  width: 100%;
+  max-width: 720px;
+}
+
+.event-entry__name{
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.event-entry__date{
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+
+.event-entry__status{
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.calendar-section{
+  background: #fff;
+  padding: 60px 0 90px;
+}
+
+.calendar-wrap{
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.calendar-title{
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+/* 이벤트 글씨 */
+.cal-event{
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.calendar-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-add-btn{
+  display: inline-block;
+  padding: 10px 18px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.calendar-add-btn:hover{
+  opacity: 0.85;
+}
+
+
+
+.post-form-section{
+  padding-top: 160px;   /* ← 헤더(120px) + 여유 */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-form-section form{
+  /* ✅ min(520px, 92%) 대신 */
+  width: 92%;
+  max-width: 520px;
+}
+.post-form-title{
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 24px;
 }

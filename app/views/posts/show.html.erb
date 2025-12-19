@@ -1,0 +1,22 @@
+<section class="event-show">
+  <div class="event-show__inner">
+
+    <h1 class="event-show__title"><%= @post.title %></h1>
+    <p class="event-show__meta"><%= @post.created_at.strftime("%Y年%m月%d日") %></p>
+
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image, class: "event-show__img", alt: @post.title %>
+    <% end %>
+
+    <% if @post.body.present? %>
+      <div class="event-show__body">
+        <%= simple_format(@post.body) %>
+      </div>
+    <% end %>
+
+    <div class="event-show__actions">
+      <%= link_to "一覧に戻る", posts_path, class: "btn" %>
+    </div>
+
+  </div>
+</section>

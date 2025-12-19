@@ -8,14 +8,16 @@ class PostsController < ApplicationController
       @post = Post.new
   end
 
-  def create
-      post = Post.new(post_params)
-      if post.save
-          redirect_to action: "index"
-      else
-          redirect_to action: "new"
-      end
+def create
+  @post = Post.new(post_params)
+  if @post.save
+    redirect_to root_path
+  else
+    render :new, status: :unprocessable_entity
   end
+end
+
+
   def show
       @post = Post.find(params[:id])
   end
@@ -40,7 +42,7 @@ class PostsController < ApplicationController
   end
 
   private
-  def post_params
-      params.require(:post).permit(:title, :start_time, :end_time)
-  end
+def post_params
+  params.require(:post).permit(:title, :start_time, :end_time)
+end
 end
